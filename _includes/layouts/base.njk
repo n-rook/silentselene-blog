@@ -17,14 +17,7 @@
 
     <header>
         <a href="/" class="home-link">{{ site_info.title }}</a>
-
-        <nav>
-            <ul class="nav">
-            {%- for entry in collections.all | eleventyNavigation %}
-                <li class="nav-item"><a href="{{ entry.url }}"{% if entry.url == page.url %} aria-current="page"{% endif %}>{{ entry.title }}</a></li>
-            {%- endfor %}
-            </ul>
-        </nav>
+        <a style="margin-left: auto; margin-right: 20px;" onclick="toggleTheme()">🌙</a>
     </header>
 
     <main>
@@ -33,3 +26,31 @@
 
     <footer></footer>
 </body>
+
+<script>
+    document.body.classList.remove("theme-light");
+
+    const themes = [ "theme-light", "theme-dark" ];
+
+    let theme = localStorage.getItem("theme");
+    if(!themes.includes(theme)) {
+        theme = "theme-light";
+        localStorage.setItem("theme", theme);
+    }
+
+    document.body.classList.add(theme);
+
+    const toggleTheme = () => {
+        document.body.classList.remove(theme)
+        switch(theme) {
+        case "theme-light":
+            theme = "theme-dark";
+            break;
+        case "theme-dark": default:
+            theme = "theme-light"
+            break;
+        }
+        document.body.classList.add(theme);
+        localStorage.setItem("theme", theme);
+    }
+</script>
