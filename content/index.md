@@ -1,3 +1,17 @@
-# Hello, world!
+---
+layout: layouts/base.njk
+eleventyNavigation:
+  key: Home
+  order: 1
+---
 
-Hello, world!
+<h1>Posts</h1>
+
+<ol reversed class="postlist">
+{% for post in collections.posts | reverse %}
+    <li class="postlist-item">
+        <a href="{{ post.url }}">{{ post.data.title }}</a>
+        <time class="postlist-date" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate("LLLL yyyy") }}</time>
+    </li>
+{% endfor %}
+</ol>

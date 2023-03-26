@@ -1,0 +1,12 @@
+---
+layout: layouts/base.njk
+permalink: "articles/{{ title | slugify }}/index.html"
+---
+<h1>{{ title }}</h1>
+
+<ul class="post-metadata">
+	<li><time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time></li>
+    <li>{{ author }}</li>
+</ul>
+
+{{ content | safe }}
