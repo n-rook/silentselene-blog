@@ -1,0 +1,23 @@
+{
+  "name": "silentselene-blog",
+  "version": "1.0.0",
+  "description": "Blog for silentselene.net. Written with 11ty.",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx @11ty/eleventy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/n-rook/silentselene-blog.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/n-rook/silentselene-blog/issues"
+  },
+  "homepage": "https://github.com/n-rook/silentselene-blog#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.0"
+  }
+}
