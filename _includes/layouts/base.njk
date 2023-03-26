@@ -1,25 +1,22 @@
 <!doctype html>
-<html lang="{{ metadata.language }}">
+<html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>{{ title or metadata.title }}</title>
-        <meta name="description" content="{{ description or metadata.description }}">
+        <title>{{ title or site_info.title }}</title>
+        <meta name="description" content="{{ description or site_info.description }}">
 
-        <link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="{{ metadata.title }}">
-		<link rel="alternate" href="/feed/feed.json" type="application/json" title="{{ metadata.title }}">
+        <link rel="alternate" href="/feed.xml" type="application/atom+xml" title="{{ site_info.title }}">
 
         <meta name="generator" content="{{ eleventy.generator }}">
 
-        <!-- For best performance, fetch CSS inline -->
-        <style>{% getBundle "css" %}</style>
+        <link rel="stylesheet" href="/main.css">
     </head>
 <body>
 
     <header>
-        <a href="/" class="home-link">{{ metadata.title }}</a>
+        <a href="/" class="home-link">{{ site_info.title }}</a>
 
         <nav>
-            <h2 class="visually-hidden">Top level navigation menu</h2>
             <ul class="nav">
             {%- for entry in collections.all | eleventyNavigation %}
                 <li class="nav-item"><a href="{{ entry.url }}"{% if entry.url == page.url %} aria-current="page"{% endif %}>{{ entry.title }}</a></li>

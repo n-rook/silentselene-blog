@@ -5,6 +5,7 @@ const pluginRss = require("@11ty/eleventy-plugin-rss");
 const pluginBundle = require("@11ty/eleventy-plugin-bundle");
 const pluginNavigation = require("@11ty/eleventy-navigation");
 const eleventy = require("@11ty/eleventy");
+const sass = require("sass");
 
 // Thanks to https://github.com/11ty/eleventy-base-blog
 // for providing a lot of inspiration!
@@ -26,16 +27,32 @@ module.exports = function(config) {
 		return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy-LL-dd');
 	});
 
+    config.addExtension("sass", {
+        outputFileExtension: "css",
+
+        compile: async function(inputContent) {
+            const result = sass.compileString(
+                inputContent,
+                {
+                    syntax: 'indented'
+                });
+            return async (data) => result.css;
+        }
+    });
+
     return {
         dir: {
             input: "content",
             includes: "../_includes",
+            data: "../_data",
             output: "_site",
         },
 
 		markdownTemplateEngine: "njk",
 
 		htmlTemplateEngine: "njk",
+
+        templateFormats: ["html", "md", "njk", "sass"],
 
         pathPrefix: "/",
     }

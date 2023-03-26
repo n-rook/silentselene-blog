@@ -3,10 +3,6 @@ layout: layouts/base.njk
 permalink: "articles/{{ title | slugify }}/index.html"
 ---
 <h1>{{ title }}</h1>
-
-<ul class="post-metadata">
-	<li><time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time></li>
-    <li>{{ author }}</li>
-</ul>
+<h2 class="post-metadata">Posted by {{ author }} on <time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time></h2>
 
 {{ content | safe }}
