@@ -11,6 +11,7 @@ const sass = require("sass");
 // for providing a lot of inspiration!
 
 module.exports = function(config) {
+    config.addPassthroughCopy("static");
 
     config.addPlugin(pluginRss);
     config.addPlugin(pluginBundle);
