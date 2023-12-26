@@ -5,9 +5,10 @@ The blog itself is hosted on GitHub pages.
 
 # How do I make changes?
 
-First, install 11ty (with the package.json included). Then, change
-the content directory. You can run `npm run build -- --serve` to preview
-your changes locally.
+First, install nodejs and npm; you can use nvm (see the .nvmrc) but you can
+also just directly install NodeJS 20 if you like. Next, install 11ty (with
+the package.json included). Then, change the content directory. You can
+run `npm run build -- --serve` to preview your changes locally.
 
 # Note on license
 
