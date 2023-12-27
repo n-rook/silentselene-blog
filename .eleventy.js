@@ -1,4 +1,7 @@
 
+const path = require('node:path');
+const url = require('node:url');
+
 const {DateTime} = require('luxon');
 
 const pluginRss = require("@11ty/eleventy-plugin-rss");
@@ -31,10 +34,18 @@ module.exports = function(config) {
     config.addExtension("sass", {
         outputFileExtension: "css",
 
-        compile: async function(inputContent) {
+        compile: async function(inputContent, inputPath) {
+            if (path.basename(inputPath).startsWith('_')) {
+                // Don't compile SASS partials.
+                console.log(`Skipping ${inputPath}`)
+                return;
+            }
+
+            const inputUrl = url.pathToFileURL(inputPath);
             const result = sass.compileString(
                 inputContent,
                 {
+                    url: inputUrl,
                     syntax: 'indented'
                 });
             return async (data) => result.css;
