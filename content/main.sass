@@ -1,33 +1,69 @@
+@import "_themes"
+
+@mixin font-body
+    font-family: "Lato", "Arial", sans-serif
+
+@mixin font-header
+    font-family: "EB Garamond", "Times New Roman", serif
+
+$top-level-margin: 8px
+
+body
+    background-color: var(--page-margin-color)
+    color: var(--text-color)
+
 header
-    background-color: #420080
+    background-color: #ae97e5
     min-height: 50px
     display: flex
     align-items: center
-    margin: 0 0 5px
+    margin: #{$top-level-margin}
 
-    .home-link
+    a.home-link
         display: block
         color: white
         font: 600 27px "EB Garamond", "Times New Roman", serif
         margin: auto 10px
         margin-block: 5px 5px
         text-decoration: none
+        color: var(--text-color)
+
+        &:active
+            color: var(--active-link-color)
+
 
 main
-    max-width: 800px
+    background-color: var(--background-color)
+
+    margin: #{$top-level-margin}
+    padding: 16px 20px
+    
+    @include font-body
+
+    .content
+        max-width: 800px
+
+h1, h2, h3, h4, h5, h6
+    @include font-header
+
+h1
+    font-weight: 600
+    font-size: 34px
+
+a
+    color: var(--link-color)
+
+    &:visited
+        color: var(--visited-link-color)
+
+    &:active
+        color: var(--active-link-color)
 
 img
     max-width: 100%
     max-height: 100%
 
 .post-metadata
-    font: 400 14px "Lato", "Arial", sans-serif
-    color: grey
-
-.theme-light
-    color: black
-    background-color: white
-
-.theme-dark
-    color: white
-    background-color: #101010
+    font-weight: 400
+    font-size: 14px
+    color: var(--subtitle-color)
